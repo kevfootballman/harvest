@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f6ee"><title>Harvest — Mandi Price Outlook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="brand" href="#homeScreen" id="brandHome"><span class="brand-mark">h</span><span>harvest<span class="brand-dot">.</span></span></a>
+    <div class="side-label">WORKSPACE</div>
+    <nav class="side-nav" aria-label="Main navigation">
+      <a class="nav-link active" href="#homeScreen" id="homeNav"><span class="nav-icon">⌂</span>Home</a><a class="nav-link" href="#forecast" id="outlookNav"><span class="nav-icon">⌁</span>Price outlook</a>
+      
+      <a class="nav-link" href="#markets" id="marketNav"><span class="nav-icon">⌖</span>Markets</a>
+      <a class="nav-link" href="#about" id="aboutNav"><span class="nav-icon">◉</span>About the model</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="source-card"><span class="source-dot"></span><div><strong>Demo data</strong><small>For project preview</small></div><span class="info-icon" title="Sample values for the UI demo">i</span></div>
+      <div class="profile"><div class="avatar">AP</div><div><strong>AgriPrice</strong><small>Student project</small></div><span class="more">···</span></div>
+    </div>
+  </aside>
+  <main class="main-content" id="mainApp"><section class="home-screen" id="homeScreen"><div class="home-header"><a class="brand home-brand" href="#homeScreen"><span class="brand-mark">h</span><span>harvest<span class="brand-dot">.</span></span></a><div class="home-header-right"><span class="daily-chip"><i></i> INDIA MANDI MARKET OUTLOOK</span><button class="home-enter" id="openDashboard">Open dashboard <span>↗</span></button><div class="avatar">AP</div></div></div><div class="home-hero"><div class="hero-copy"><div class="eyebrow"><span class="eyebrow-line"></span>GROW WITH A CLEARER VIEW</div><h1>Good things grow<br>with good information.</h1><p>Explore everyday crops, compare mandi prices, and see the market outlook in one place.</p><div class="hero-actions"><button class="hero-button" id="exploreGoods">Explore commodities <span>↓</span></button><span class="hero-footnote">Daily market data · India</span></div></div><div class="hero-art" aria-hidden="true"><div class="sun-disc"></div><div class="hill hill-back"></div><div class="hill hill-front"></div><div class="plant plant-one"><i></i><b></b><em></em></div><div class="plant plant-two"><i></i><b></b><em></em></div><div class="hero-sprout">✳</div><span class="art-label">FARM TO MARKET</span></div></div><section class="goods-section" id="goodsSection"><div class="goods-heading"><div><div class="section-kicker">BROWSE THE HARVEST</div><h2>What are you looking for?</h2><p>Select a good to explore its mandi price outlook.</p></div><button class="view-all" id="viewAllGoods">View all <span>↗</span></button></div><div class="goods-grid" id="goodsGrid"></div></section><div class="home-bottom"><div class="home-data-note"><span class="note-icon">✳</span><div><strong>Built around public mandi data</strong><p>Market prices are reported daily by mandis. Live connection needs a free data.gov.in API key configured on your computer.</p></div></div><a href="https://www.data.gov.in/catalog/current-daily-price-various-commodities-various-markets-mandi" target="_blank" rel="noreferrer">About the data <span>↗</span></a></div><footer class="footer home-footer"><span>HARVEST <span class="footer-dot">·</span> A STUDENT PROJECT PROTOTYPE</span><span>India · AgriPrice Prediction</span></footer></section><div class="dashboard-view screen-hidden" id="dashboardView">
+    <header class="topbar"><div class="breadcrumb">Workspace <span>/</span> <strong>Overview</strong></div><div class="top-actions"><span class="today"><span class="tiny-calendar">▦</span><span id="todayLabel">Today</span></span><button class="icon-button" aria-label="Notifications">♧<i></i></button><div class="avatar top-avatar">AP</div></div></header>
+    <section class="welcome-row"><div><div class="eyebrow"><span class="eyebrow-line"></span>AGRICULTURAL MARKET INTELLIGENCE</div><h1>Know the market<br>before it moves.</h1><p class="intro">A clearer view of mandi prices for the people who grow, trade, and plan.</p></div><div class="data-badge" id="dataStatus"><span class="pulse"></span>Demo preview <span class="badge-divider"></span><span>Sample view</span></div></section>
+    <section class="filter-bar" aria-label="Dashboard filters">
+      <label class="filter-control"><span>COMMODITY</span><select id="commoditySelect" aria-label="Select commodity"></select></label><span class="filter-separator"></span>
+      <label class="filter-control"><span>MARKET</span><select id="marketSelect" aria-label="Select market"></select></label><span class="filter-separator"></span>
+      <label class="filter-control"><span>PERIOD</span><select id="periodSelect" aria-label="Select period"><option value="7">Last 7 days</option><option value="14">Last 14 days</option><option value="30" selected>Last 30 days</option></select></label>
+      <button id="refreshButton" class="refresh-button">↻ <span>Refresh prices</span></button>
+    </section>
+    <div class="demo-note"><span class="note-icon">✳</span><span id="demoNoticeText"><strong>Preview mode:</strong> figures below are illustrative sample data. Connect your Agmarknet/OGD dataset and trained model to show real market prices and forecasts.</span><button class="note-close" aria-label="Dismiss note">×</button></div>
+    <section class="metrics-grid" aria-label="Market summary">
+      <article class="metric-card"><div class="metric-top"><span>Current modal price</span><span class="metric-icon green">₹</span></div><div class="metric-value" id="currentPrice">—</div><div class="metric-foot"><span id="todayRange">—</span><span class="muted">per quintal</span></div></article>
+      <article class="metric-card"><div class="metric-top"><span>7-day change</span><span class="metric-icon amber">↗</span></div><div class="metric-value" id="weeklyChange">—</div><div class="metric-foot"><span class="change-pill" id="changePill">—</span><span class="muted">vs. previous week</span></div></article>
+      <article class="metric-card"><div class="metric-top"><span>Next 7-day outlook</span><span class="metric-icon blue">⌁</span></div><div class="metric-value" id="forecastValue">—</div><div class="metric-foot"><span class="trend-label" id="forecastTrend">—</span><span class="muted">demo estimate</span></div></article>
+      <article class="metric-card"><div class="metric-top"><span>Forecast confidence</span><span class="metric-icon violet">◎</span></div><div class="metric-value" id="confidenceValue">—</div><div class="metric-foot"><span class="muted">Illustrative only</span><span class="confidence-track"><i></i></span></div></article>
+    </section>
+    <section class="content-grid" id="forecast">
+      <article class="panel chart-panel"><div class="panel-heading"><div><div class="section-kicker">PRICE MOVEMENT</div><h2>History &amp; short-term outlook</h2><p class="panel-sub" id="chartSubtitle">Modal price · ₹ per quintal</p></div><div class="legend"><span><i class="legend-history"></i>Observed</span><span><i class="legend-forecast"></i><span id="chartLegendForecast">Demo forecast</span></span></div></div>
+        <div class="chart-wrap"><div class="chart-y-labels"><span id="yTop">—</span><span id="yMid">—</span><span id="yLow">—</span><span>₹0</span></div><svg id="priceChart" viewBox="0 0 800 280" role="img" aria-label="Price history and demo forecast chart" preserveAspectRatio="none"></svg><div class="chart-x-labels" id="chartLabels"></div></div>
+        <div class="chart-foot"><span><i class="source-dot"></i><span id="chartFootnote">Sample series for interface demonstration</span></span><button class="text-button" id="downloadButton">Download sample data <span>↓</span></button></div>
+      </article>
+      <article class="panel insight-panel" id="markets"><div class="section-kicker">MARKET SNAPSHOT</div><div class="insight-title-row"><h2 id="marketTitle">—</h2><span class="market-tag">DEMO</span></div><p class="market-location" id="marketLocation">—</p><div class="snapshot-price"><span>Today’s modal price</span><strong id="snapshotPrice">—</strong><small>₹ / quintal</small></div><div class="range-row"><span>Min <strong id="minPrice">—</strong></span><span class="range-line"><i></i></span><span>Max <strong id="maxPrice">—</strong></span></div><div class="insight-divider"></div><div class="market-meta"><span>Commodity</span><strong id="marketCommodity">—</strong></div><div class="market-meta"><span>Forecast window</span><strong>Next 7 days</strong></div><div class="market-meta"><span>Data status</span><strong class="status-demo"><i></i> Sample only</strong></div><a href="#about" class="learn-link">How to read this dashboard <span>↗</span></a></article>
+    </section>
+    <section class="panel about-panel" id="about"><div class="about-icon">✳</div><div class="about-copy"><div class="section-kicker">ABOUT THIS PROJECT</div><h2>Turning public market data into useful signals.</h2><p>This student project explores AI/ML models for short-term wholesale price forecasting of onions, potatoes, and pulses. The planned analysis compares model accuracy and studies the role of seasonality, arrivals, and optional weather data.</p></div><div class="about-links"><a href="https://agmarknet.gov.in/" target="_blank" rel="noreferrer">Agmarknet <span>↗</span></a><a href="https://www.data.gov.in/" target="_blank" rel="noreferrer">Open Government Data <span>↗</span></a></div></section>
+    <footer class="footer"><span>HARVEST <span class="footer-dot">·</span> A STUDENT PROJECT PROTOTYPE</span><span>Forecasts are not live market prices or trading advice.</span></footer>
+  </div></main>
+</div>
+<div id="toast" role="status" aria-live="polite"></div><script src="app.js"></script>
+</body></html>
+
+
+
+
